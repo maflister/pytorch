@@ -3,10 +3,10 @@ From: ubuntu:16.04
 
 %labels
 Maintainer Matthew Flister
-Version v18.06.05
+Version v18.06.06
 
 %help
-This container runs Tensorflow-GPU.
+This container runs PyTorch.
 
 %environment
     # nvidia driver libs specific cuda version libs are mounted by --bind command at run
