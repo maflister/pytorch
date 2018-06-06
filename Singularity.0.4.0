@@ -63,6 +63,3 @@ This container runs Tensorflow-GPU.
     # Install python packages
     pip3 install --upgrade dominate torchvision visdom numpy jupyter
 
-    # Install CycleGan and pix2pix
-    git clone https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
-
