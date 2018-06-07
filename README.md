@@ -21,13 +21,13 @@ cd $PBS_O_WORKDIR
 
 # print tunneling instructions
 echo -e "
-1. SSH tunnel from your workstation using the following command:
+SSH tunnel from your workstation using the following command:
    
    ssh -L ${port}:${node}:${port} ${user}@$PBS_O_HOST
    
-   and point your web browser to http://localhost:${port}.
+and point your web browser to http://localhost:${port}.
 
-2. Copy/paste the token below when you connect for the first time.
+
 "
 
 # load modules
@@ -58,11 +58,11 @@ $ qsub pytorch.pbs
 
 Example output file: pytorch_test.o166283 (Port numbers will be different for your job)
 ```
-1. SSH tunnel from your workstation using the following command:
+SSH tunnel from your workstation using the following command:
 
    ssh -L 8844:node01:8844 tester@loginnode
 
-   and point your web browser to http://localhost:8844.
+and point your web browser to http://localhost:8844.
 ```
 
 2. Open second terminal and run tunneling command from the output file:
