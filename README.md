@@ -26,8 +26,6 @@ SSH tunnel from your workstation using the following command:
    ssh -L ${port}:${node}:${port} ${user}@$PBS_O_HOST
    
 and point your web browser to http://localhost:${port}.
-
-
 "
 
 # load modules
