@@ -16,14 +16,14 @@ Example job script:
 port=$(shuf -i8000-9999 -n1)
 node=$(hostname -s)
 user=$(whoami)
-
+submit_host=$(echo ${PBS_O_HOST%%.*}.rcc.mcw.edu)
 cd $PBS_O_WORKDIR
 
 # print tunneling instructions
 echo -e "
 SSH tunnel from your workstation using the following command:
    
-   ssh -L ${port}:${node}:${port} ${user}@$PBS_O_HOST
+   ssh -L ${port}:${node}:${port} ${user}@${submit_host}
    
 and point your web browser to http://localhost:${port}.
 "
