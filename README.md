@@ -29,7 +29,7 @@ and point your web browser to http://localhost:${port}.
 "
 
 # load modules
-module load pytorch/0.4.1
+module load pytorch/1.0.1
 
 # start visdom monitor(required)
 pytorch python -m visdom.server -port ${port} &
