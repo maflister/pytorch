@@ -5,24 +5,22 @@ From: ubuntu:16.04
 Maintainer Matthew Flister
 
 %help
-This container runs PyTorch 1.0.1.
+This container runs PyTorch 1.2.0.
 
 %environment
     # nvidia driver libs specific cuda version libs are mounted by --bind command at run
     # required for GPU enabled container
     SHELL=/bin/bash
-    CPATH="/cuda/include:$CPATH"
-    PATH="/cuda/bin:/nvidia:$PATH"
-    LD_LIBRARY_PATH="/cuda/lib64:/nvidia:$LD_LIBRARY_PATH"
-    CUDA_HOME="/cuda"
-    export PATH LD_LIBRARY_PATH CPATH CUDA_HOME
+    PATH="/nvidia:$PATH"
+    LD_LIBRARY_PATH="/nvidia:$LD_LIBRARY_PATH"
+    export SHELL PATH LD_LIBRARY_PATH 
 
 %post
     # default mount points
     mkdir -p /scratch/global /scratch/local /rcc/stor1/refdata /rcc/stor1/projects /rcc/stor1/depts
 
     # NVIDIA dirver mount points
-    mkdir /nvidia /cuda
+    mkdir /nvidia 
     touch /usr/bin/nvidia-smi
 
     # Install necessary packages
@@ -52,7 +50,7 @@ This container runs PyTorch 1.0.1.
     pip3 install --no-cache-dir --upgrade pip==9.0.3
 
     # Install PyTorch GPU
-    export PT_BINARY_URL=https://download.pytorch.org/whl/cu90/torch-1.0.1.post2-cp27-cp27mu-linux_x86_64.whl
+    export PT_BINARY_URL=https://download.pytorch.org/whl/cu100/torch-1.2.0-cp27-cp27mu-manylinux1_x86_64.whl
     pip install --no-cache-dir --ignore-installed --upgrade $PT_BINARY_URL
 
     # Install python packages
@@ -78,10 +76,11 @@ This container runs PyTorch 1.0.1.
         opencv-python \
         tables \
         tqdm \
-        scikit-image
+        scikit-image \
+        tensorboard
 
     # Install PyTorch GPU
-    export PT_BINARY_URL=https://download.pytorch.org/whl/cu90/torch-1.0.1.post2-cp35-cp35m-linux_x86_64.whl 
+    export PT_BINARY_URL=https://download.pytorch.org/whl/cu100/torch-1.2.0-cp35-cp35m-manylinux1_x86_64.whl 
     pip3 install --no-cache-dir --ignore-installed --upgrade $PT_BINARY_URL
 
     # Install python packages
@@ -107,4 +106,5 @@ This container runs PyTorch 1.0.1.
         opencv-python \
         tables \
         tqdm \
-        scikit-image
+        scikit-image \
+        tensorboard
