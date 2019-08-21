@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -N pytorch_tensorboard
+#PBS -l nodes=1:ppn=1:gpus=1
+#PBS -l mem=5gb
+#PBS -l walltime=1:00:00
+#PBS -j oe
+
+# get tunneling info
+port=$(shuf -i8000-9999 -n1)
+node=$(hostname -s)
+user=$(whoami)
+
+cd $PBS_O_WORKDIR
+
+# print tunneling instructions
+echo -e "
+SSH tunnel from your workstation using the following command:
+   
+   ssh -L ${port}:${node}:${port} ${user}@$PBS_O_HOST
+   
+and point your web browser to http://localhost:${port}.
+"
+
+# load modules
+module load pytorch/1.2.0
+
+# start training
+pytorch python train.py --display_port ${port} --dataroot ./datasets/maps --name maps_cyclegan --model cycle_gan --no_dropout
+
+# start tensorboard
+tensorboard-gpu
