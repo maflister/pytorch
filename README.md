@@ -1,7 +1,7 @@
 # PyTorch
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/1266)
 
-Singularity container running latest Ubuntu and PyTorch.
+Singularity container running PyTorch.
 
 # Pytorch with Visdom Job
 ```
@@ -29,7 +29,7 @@ and point your web browser to http://localhost:${port}.
 "
 
 # load modules
-module load pytorch/1.2.0
+module load pytorch/1.3.0
 
 # start visdom monitor(required)
 pytorch python -m visdom.server -port ${port} &
@@ -106,7 +106,7 @@ echo -e "
 "
 
 # load modules
-module load pytorch/1.2.0
+module load pytorch/1.3.0
 
 # start training
 pytorch python train.py --display_port ${port} --dataroot ./datasets/maps --name maps_cyclegan --model cycle_gan --no_dropout
