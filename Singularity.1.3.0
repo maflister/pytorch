@@ -54,7 +54,7 @@ This container runs PyTorch 1.3.0.
     python -m pip install --no-cache-dir --ignore-installed --upgrade $PT_BINARY_URL
 
     # Install python packages
-    python -m pip install --no-binary --upgrade \
+    python -m pip install --upgrade \
         dominate \
         torchvision \
         visdom \
@@ -74,17 +74,17 @@ This container runs PyTorch 1.3.0.
         jupyterlab \
         pydicom \
         opencv-python \
-        tables \
+        tables==3.5.2 \
         tqdm \
         scikit-image \
         tensorboard
 
     # Install PyTorch GPU
     export PT_BINARY_URL=https://download.pytorch.org/whl/cu101/torch-1.3.0-cp35-cp35m-manylinux1_x86_64.whl 
-    python -m pip install --no-cache-dir --ignore-installed --upgrade $PT_BINARY_URL
+    python3 -m pip install --no-cache-dir --ignore-installed --upgrade $PT_BINARY_URL
 
     # Install python packages
-    python3 -m pip install --no-binary --upgrade \
+    python3 -m pip install --upgrade \
         dominate \
         torchvision \
         visdom \
